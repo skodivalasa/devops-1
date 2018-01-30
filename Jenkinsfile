@@ -76,7 +76,7 @@ pipeline {
                 expression { params.REQUESTED_ACTION == 'Rollingupdate' }
             }
             steps {
-                sh 'echo Hello'
+                sh 'cd HM-Demo'
                 sh 'kubectl patch deployment ${deployment} --patch "$(cat patch.yaml)"'
             }
         }
