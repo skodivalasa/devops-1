@@ -17,7 +17,7 @@ pipeline {
     // when https://issues.jenkins-ci.org/browse/JENKINS-41748 is merged and
     // released.
         VERSION= "${BUILD_ID}"
-        image= "pavanraj29/nodejs-app"
+        image= "pavanraj29/nodejs-app-demo"
      }
     
     stages {
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 sh '''sudo docker login -u pavanraj29 -p Pavan@123
                 sudo docker push ${image}:${VERSION}
-                sed -i -e 's/nodejs-app:latest/nodejs-app:'${VERSION}'/g' deploy-canary.yaml
+                sed -i -e 's/nodejs-app-demo:latest/nodejs-app-demo:'${VERSION}'/g' deploy-canary.yaml
                 '''
             }
         }
