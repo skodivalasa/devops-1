@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodejs
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+        env: dev
+    spec:
+      containers:
+        - name: front-end
+          image: pavanraj29/nodejs-app
+          ports:
+            - containerPort: 5000
