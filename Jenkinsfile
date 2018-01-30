@@ -27,8 +27,8 @@ pipeline {
         stage("build") {
             steps {
                 echo "${params.buildVersion}"
-                sh 'rm -rf ./*'
-                sh 'git clone https://github.com/pavaraj29/node-js-sample.git'
+                sh 'rm -rf HM-Demo/*'
+                sh 'git clone https://github.com/pavaraj29/HM-Demo.git'
             }
         }
         stage("Docker image build") {
