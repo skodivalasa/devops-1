@@ -58,7 +58,7 @@ pipeline {
             }
             steps {
                 sh 'echo Hello'
-                sh 'kubectl patch deployment ${deployment} -p "$(cat patch.yaml)"'
+                sh 'kubectl patch deployment ${deployment} --patch "$(cat patch.yaml)"'
             }
         }
         stage("Blue-green Deployment") {
