@@ -57,7 +57,7 @@ pipeline {
             }
             steps {
                 sh 'echo Hello'
-                sh 'kubectl patch deployment ${deployment} -p $"spec:\n   containers:\n   - name: front-end\n     image: ${image}:${VERSION}"'
+                sh 'kubectl patch deployment ${deployment} -p $"spec:\n   template:\n   spec:\n   containers:\n   - name: front-end\n     image: ${image}:${VERSION}"'
             }
         }
         stage("Blue-green Deployment") {
