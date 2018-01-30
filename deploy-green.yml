@@ -3,16 +3,22 @@ kind: Deployment
 metadata:
   name: nodejs
 spec:
-  replicas: 6
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  minReadySeconds: 5
   template:
     metadata:
       labels:
         app: nodeapp
-        color: green
+        version: Version
     spec:
       containers:
         - name: front-end
-          image: 958306274796.dkr.ecr.us-east-1.amazonaws.com/demo-jenkins-pipeline:nodejs-image-new-v1
+          image: pavanraj29/nodejs-app-demo
           ports:
             - containerPort: 5000
           readinessProbe:
