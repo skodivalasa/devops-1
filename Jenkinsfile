@@ -76,8 +76,10 @@ pipeline {
                 expression { params.REQUESTED_ACTION == 'Rollingupdate' }
             }
             steps {
-                sh 'cd HM-Demo'
-                sh 'kubectl patch deployment ${deployment} --patch "$(cat patch.yaml)"'
+                sh '''
+                cd HM-Demo
+                kubectl patch deployment ${deployment} --patch "$(cat patch.yaml)"
+                '''
             }
         }
         stage("Blue-green Deployment") {
