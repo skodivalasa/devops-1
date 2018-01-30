@@ -47,6 +47,7 @@ pipeline {
                 sh '''sudo docker login -u pavanraj29 -p Pavan@123
                 sudo docker push ${image}:${VERSION}
                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' patch.yaml
+                sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' ${DEPLOYMENTFILE}
                 sed -i -e 's/nodejs-app-demo:latest/nodejs-app-demo:'${VERSION}'/g' deploy-canary.yaml
                 '''
             }
