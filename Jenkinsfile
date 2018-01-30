@@ -16,6 +16,9 @@ pipeline {
     // other env vars in environment variable values, but that will be possible
     // when https://issues.jenkins-ci.org/browse/JENKINS-41748 is merged and
     // released.
+        service = "my-service"
+        deployment = "nodejs"
+        DEPLOYMENTFILE = "deploy-green.yml"
         VERSION= "${BUILD_ID}"
         image= "pavanraj29/nodejs-app-demo"
      }
