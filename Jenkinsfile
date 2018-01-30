@@ -49,7 +49,7 @@ pipeline {
                 cd HM-Demo
                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' patch.yaml
                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' ${DEPLOYMENTFILE}
-                sed -i -e 's/appVersion/"'${VERSION}'"/g' ${DEPLOYMENTFILE}
+                #sed -i -e 's/appVersion/"'${VERSION}'"/g' ${DEPLOYMENTFILE}
                 sed -i -e 's/nodejs-app-demo:latest/nodejs-app-demo:'${VERSION}'/g' deploy-canary.yaml
                 '''
             }
