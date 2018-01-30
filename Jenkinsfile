@@ -46,6 +46,7 @@ pipeline {
             steps {
                 sh '''sudo docker login -u pavanraj29 -p Pavan@123
                 sudo docker push ${image}:${VERSION}
+                sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' patch.yaml
                 sed -i -e 's/nodejs-app-demo:latest/nodejs-app-demo:'${VERSION}'/g' deploy-canary.yaml
                 '''
             }
@@ -57,7 +58,7 @@ pipeline {
             }
             steps {
                 sh 'echo Hello'
-                sh 'kubectl patch deployment ${deployment} -p $"spec:\n   template:\n   spec:\n   containers:\n   - name: front-end\n     image: ${image}:${VERSION}"'
+                sh 'kubectl patch deployment ${deployment} -p "$(cat patch.yaml)"'
             }
         }
         stage("Blue-green Deployment") {
