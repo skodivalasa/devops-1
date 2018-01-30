@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: nodeapp
-        version: Version
+        version: appVersion
     spec:
       containers:
         - name: front-end
