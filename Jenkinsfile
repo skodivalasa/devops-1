@@ -93,7 +93,7 @@ pipeline {
                 sh '''
                 cd HM-Demo
                 kubectl apply -f ${DEPLOYMENTFILE}
-                kubectl patch svc ${service} -p $"spec:\n selector:\n  app: nodeapp\n    version: "${VERSION}""
+                kubectl patch svc ${service} -p "$(cat patch-svc.yaml)"
                 '''
             }
         }
