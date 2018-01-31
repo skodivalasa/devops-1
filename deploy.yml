@@ -14,7 +14,8 @@ spec:
     metadata:
       labels:
         app: nodeapp
-        version: 2
+        version: 22
+        color: blue
     spec:
       containers:
         - name: front-end
