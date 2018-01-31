@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: pavanraj29/nodejs-app-dem
+          image: pavanraj29/nodejs-app-demo
           ports:
             - containerPort: 5000
           readinessProbe:
