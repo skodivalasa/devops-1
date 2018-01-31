@@ -10,6 +10,9 @@ spec:
       maxSurge: 2
       maxUnavailable: 1
   minReadySeconds: 5
+  selector:
+    matchLabels:
+      app: nodeapp
   template:
     metadata:
       labels:
@@ -18,7 +21,7 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: pavanraj29/nodejs-app-demo
+          image: pavanraj29/nodejs-app-dem
           ports:
             - containerPort: 5000
           readinessProbe:
