@@ -15,6 +15,7 @@ spec:
       labels:
         app: nodeapp
         color: green
+        version: appVersion
     spec:
       containers:
         - name: front-end
