@@ -1,0 +1,4 @@
+spec:
+ selector:
+    app: nodeapp
+    version: appVersion
