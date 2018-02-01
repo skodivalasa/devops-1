@@ -26,7 +26,6 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                echo "${params.buildVersion}"
                 sh 'rm -rf HM-Demo'
                 sh 'git clone https://github.com/pavaraj29/HM-Demo.git'
             }
