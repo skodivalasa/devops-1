@@ -1,4 +1,4 @@
 spec:
  selector:
     app: nodeapp
-    version: appVersion
+    color: envColor
