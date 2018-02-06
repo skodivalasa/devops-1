@@ -1,8 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: nodejs
-  namespace: hm-demo
+  name: nodejs-green
 spec:
   replicas: 4
   strategy:
