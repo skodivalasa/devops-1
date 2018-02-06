@@ -47,8 +47,6 @@ pipeline {
                 sudo docker push ${image}:${VERSION}
                 cd HM-Demo
                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' patch.yaml
-                sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' ${DEPLOYMENTFILE}
-                sed -i -e 's/appVersion/"'${VERSION}'"/g' ${DEPLOYMENTFILE}
                 '''
             }
         }
@@ -75,6 +73,7 @@ pipeline {
                 cd HM-Demo
                 curr_env=`kubectl get svc my-service -n hm-demo -o jsonpath="{.spec.selector.color}"`
                 if [ $curr_env = "blue" ];then new_env="green";else new_env="blue";fi
+                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' deploy-${new_env}.yaml
                 sed -i -e 's/envcolor/"'${new_env}'"/g' patch-svc.yaml
                 kubectl create -f deploy-${new_env}.yaml
                 kubectl patch svc ${service} -n hm-demo -p "$(cat patch-svc.yaml)"
