@@ -18,7 +18,7 @@ pipeline {
     // released.
         service = "my-service"
         deployment = "nodejs"
-        DEPLOYMENTFILE = "deploy-green.yml"
+        DEPLOYMENTFILE = "deploy-green.yaml"
         VERSION= "${BUILD_ID}"
         image= "pavanraj29/nodejs-app-demo"
      }
