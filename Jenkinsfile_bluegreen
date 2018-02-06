@@ -79,7 +79,9 @@ pipeline {
                 kubectl create -f deploy-${new_env}.yaml
                 kubectl patch svc ${service} -p "$(cat patch-svc.yaml)"
                 sleep 60
-                kubectl delete -f deploy-${curr_env}.yaml
+                SERVICE_IP=`kubectl get svc my-service -o jsonpath="{.status.loadBalancer.ingress[0].*}"`
+                response=$(curl --write-out %{http_code} --silent --output /dev/null ${SERVICE_IP})
+                if [ $response == 200 ];then kubectl delete -f deploy-${curr_env}.yaml;else "deployment not successful";fi
                 '''
             }
         }
