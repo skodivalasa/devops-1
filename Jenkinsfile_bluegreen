@@ -72,6 +72,7 @@ pipeline {
             }
             steps {
                 sh '''
+                #!/bin/bash
                 cd HM-Demo
                 curr_env=`kubectl get svc my-service -n hm-demo -o jsonpath="{.spec.selector.color}"`
                 if [ $curr_env == "blue" ];then new_env="green";else new_env="blue";fi
