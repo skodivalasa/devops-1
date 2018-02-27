@@ -43,7 +43,8 @@ pipeline {
         }
         stage("Docker image push") {
             steps {
-                sh '''sudo docker login -u pavanraj29 -p Pavan@123
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'Dockercreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                sh '''sudo docker login -u $USERNAME -p $PASSWORD
                 sudo docker push ${image}:${VERSION}
                 cd HM-Demo
                 sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' patch.yaml
