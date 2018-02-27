@@ -3,21 +3,20 @@ kind: Deployment
 metadata:
   name: nodejs
 spec:
-  replicas: 3
+  replicas: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 2
+      maxSurge: 1
       maxUnavailable: 1
   minReadySeconds: 5
   template:
     metadata:
       labels:
         app: nodeapp
-        env: dev
     spec:
       containers:
         - name: front-end
-          image: pavanraj29/nodejs-app
+          image: pavanraj29/nodejs-app-demo
           ports:
             - containerPort: 5000
